@@ -1,5 +1,5 @@
 {
-    "name": "backpack/logmanager",
+    "name": "romansev/logmanager",
     "description": "An interface to preview, download and delete Laravel log files.",
     "keywords": [
         "backpack",
