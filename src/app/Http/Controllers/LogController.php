@@ -61,7 +61,7 @@ class LogController extends Controller
     public function index()
     {
         $this->data['files'] = $this->getFiles();
-        $this->data['title'] = trans('logmanager.log_manager');
+        $this->data['title'] = trans('romansev::logmanager.log_manager');
 
         return view('logmanager::logs', $this->data);
     }
@@ -79,11 +79,11 @@ class LogController extends Controller
         $logs = $this->getLog($file);
 
         if (count($logs) <= 0) {
-            abort(404, trans('logmanager.log_file_doesnt_exist'));
+            abort(404, trans('romansev::logmanager.log_file_doesnt_exist'));
         }
 
         $this->data['logs'] = $logs;
-        $this->data['title'] = trans('logmanager.preview').' '.trans('logmanager.logs');
+        $this->data['title'] = trans('romansev::logmanager.preview').' '.trans('romansev::logmanager.logs');
         $this->data['file_name'] = decrypt($file_name);
 
         return view('logmanager::log_item', $this->data);
@@ -122,7 +122,7 @@ class LogController extends Controller
             return 'success';
         }
 
-        abort(404, trans('logmanager.log_file_doesnt_exist'));
+        abort(404, trans('romansev::logmanager.log_file_doesnt_exist'));
     }
 
     private function getLog($file)
