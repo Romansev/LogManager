@@ -3,16 +3,16 @@
 @php
     $breadcrumbs = [
       trans('backpack::crud.admin') => backpack_url('dashboard'),
-      trans('backpack::logmanager.log_manager') => backpack_url('log'),
-      trans('backpack::logmanager.preview') => false,
+      trans('romansev::logmanager.log_manager') => backpack_url('log'),
+      trans('romansev::logmanager.preview') => false,
     ];
 @endphp
 
 @section('header')
     <section class="container-fluid">
         <h2>11
-            {{ trans('backpack::logmanager.log_manager') }}<small>{{ trans('backpack::logmanager.file_name') }}: <i>{{ $file_name }}</i></small>
-            <small><a href="{{ backpack_url('log') }}" class="hidden-print font-sm"><i class="la la-angle-double-left"></i> {{ trans('backpack::logmanager.back_to_all_logs') }}</a></small>
+            {{ trans('romansev::logmanager.log_manager') }}<small>{{ trans('romansev::logmanager.file_name') }}: <i>{{ $file_name }}</i></small>
+            <small><a href="{{ backpack_url('log') }}" class="hidden-print font-sm"><i class="la la-angle-double-left"></i> {{ trans('romansev::logmanager.back_to_all_logs') }}</a></small>
         </h2>
     </section>
 @endsection
