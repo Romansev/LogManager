@@ -53,7 +53,7 @@ class LogManagerServiceProvider extends ServiceProvider
         // publish the views
         $this->publishes([__DIR__.'/resources/views' => resource_path('views/vendor/backpack/logmanager')], 'views');
 
-        $this->loadTranslationsFrom(realpath(__DIR__.'/resources/lang'), 'backpack');
+        $this->loadTranslationsFrom(realpath(__DIR__.'/resources/lang'), 'romansev');
     }
 
     /**
