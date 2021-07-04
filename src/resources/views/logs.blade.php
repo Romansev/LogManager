@@ -3,15 +3,15 @@
 @php
   $breadcrumbs = [
     trans('backpack::crud.admin') => backpack_url('dashboard'),
-    trans('romansev::logmanager.log_manager') => backpack_url('log'),
-    trans('romansev::logmanager.existing_logs') => false,
+    trans('logmanager.log_manager') => backpack_url('log'),
+    trans('logmanager.existing_logs') => false,
   ];
 @endphp
 
 @section('header')
     <section class="container-fluid">
       <h2>
-        {{ trans('romansev::logmanager.log_manager') }}<small>{{ trans('romansev::logmanager.log_manager_description') }}</small>
+        {{ trans('logmanager.log_manager') }}<small>{{ trans('logmanager.log_manager_description') }}</small>
       </h2>
     </section>
 @endsection
@@ -24,11 +24,11 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>{{ trans('romansev::logmanager.file_name') }}</th>
-            <th>{{ trans('romansev::logmanager.date') }}</th>
-            <th>{{ trans('romansev::logmanager.last_modified') }}</th>
-            <th class="text-right">{{ trans('romansev::logmanager.file_size') }}</th>
-            <th>{{ trans('romansev::logmanager.actions') }}</th>
+            <th>{{ trans('logmanager.file_name') }}</th>
+            <th>{{ trans('logmanager.date') }}</th>
+            <th>{{ trans('logmanager.last_modified') }}</th>
+            <th class="text-right">{{ trans('logmanager.file_size') }}</th>
+            <th>{{ trans('logmanager.actions') }}</th>
           </tr>
         </thead>
         <tbody>
@@ -40,10 +40,10 @@
             <td>{{ \Carbon\Carbon::createFromTimeStamp($file['last_modified'])->formatLocalized('%H:%M') }}</td>
             <td class="text-right">{{ round((int)$file['file_size']/1048576, 2).' MB' }}</td>
             <td>
-                <a class="btn btn-sm btn-link" href="{{ url(config('backpack.base.route_prefix', 'admin').'/log/preview/'. encrypt($file['file_name'])) }}"><i class="la la-eye"></i> {{ trans('romansev::logmanager.preview') }}</a>
-                <a class="btn btn-sm btn-link" href="{{ url(config('backpack.base.route_prefix', 'admin').'/log/download/'.encrypt($file['file_name'])) }}"><i class="la la-cloud-download"></i> {{ trans('romansev::logmanager.download') }}</a>
+                <a class="btn btn-sm btn-link" href="{{ url(config('backpack.base.route_prefix', 'admin').'/log/preview/'. encrypt($file['file_name'])) }}"><i class="la la-eye"></i> {{ trans('logmanager.preview') }}</a>
+                <a class="btn btn-sm btn-link" href="{{ url(config('backpack.base.route_prefix', 'admin').'/log/download/'.encrypt($file['file_name'])) }}"><i class="la la-cloud-download"></i> {{ trans('logmanager.download') }}</a>
                 @if (config('backpack.logmanager.allow_delete'))
-                    <a class="btn btn-sm btn-link" data-button-type="delete" href="{{ url(config('backpack.base.route_prefix', 'admin').'/log/delete/'.encrypt($file['file_name'])) }}"><i class="la la-trash-o"></i> {{ trans('romansev::logmanager.delete') }}</a>
+                    <a class="btn btn-sm btn-link" data-button-type="delete" href="{{ url(config('backpack.base.route_prefix', 'admin').'/log/delete/'.encrypt($file['file_name'])) }}"><i class="la la-trash-o"></i> {{ trans('logmanager.delete') }}</a>
                 @endif
             </td>
           </tr>
@@ -66,7 +66,7 @@
         var delete_button = $(this);
         var delete_url = $(this).attr('href');
 
-        if (confirm("{{ trans('romansev::logmanager.delete_confirm') }}") == true) {
+        if (confirm("{{ trans('logmanager.delete_confirm') }}") == true) {
             $.ajax({
                 url: delete_url,
                 type: 'DELETE',
@@ -79,21 +79,21 @@
 
                     // Show an alert with the result
                     new Noty({
-                        text: "<strong>{{ trans('romansev::logmanager.delete_confirmation_title') }}</strong><br>{{ trans('romansev::logmanager.delete_confirmation_message') }}",
+                        text: "<strong>{{ trans('logmanager.delete_confirmation_title') }}</strong><br>{{ trans('logmanager.delete_confirmation_message') }}",
                         type: "success"
                     }).show();
                 },
                 error: function(result) {
                     // Show an alert with the result
                     new Noty({
-                        text: "<strong>{{ trans('romansev::logmanager.delete_error_title') }}</strong><br>{{ trans('romansev::logmanager.delete_error_message') }}",
+                        text: "<strong>{{ trans('logmanager.delete_error_title') }}</strong><br>{{ trans('logmanager.delete_error_message') }}",
                         type: "warning"
                     }).show();
                 }
             });
         } else {
             new Noty({
-                text: "<strong>{{ trans('romansev::logmanager.delete_cancel_title') }}</strong><br>{{ trans('romansev::logmanager.delete_cancel_message') }}",
+                text: "<strong>{{ trans('logmanager.delete_cancel_title') }}</strong><br>{{ trans('logmanager.delete_cancel_message') }}",
                 type: "info"
             }).show();
         }
